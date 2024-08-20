@@ -1,0 +1,8 @@
+#!/bin/sh
+snap=$(snapper list | grep source-lock | tail -n 1 | awk '{print $1}')
+snapper -c var undochange $snap..0
+
+snapper rollback $snap
+start=$((`echo "$snap+2"` | bc))
+stop=$((`snapper list | tail -n 1 | awk '{print $1}'` -1))
+snapper delete $start-$stop

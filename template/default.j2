@@ -1,0 +1,8 @@
+default install
+prompt 1
+timeout 5
+
+#Install i386 Linux
+label install
+  kernel linux
+  append initrd=initrd splash=silent vga=0x314 showopts install=http://20.20.20.1/dvd autoyast=http://20.20.20.1{{Enviroment}}

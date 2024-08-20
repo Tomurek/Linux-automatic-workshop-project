@@ -1,0 +1,9 @@
+[Unit]
+Description=Run on boot
+
+[Service]
+Type=oneshot
+ExecStart=/bin/sh -c /usr/bin/lock.sh
+
+[Install]
+WantedBy=default.target

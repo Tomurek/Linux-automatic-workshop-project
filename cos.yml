@@ -1,0 +1,71 @@
+- hosts: localhost
+  become_user: root
+  vars_files: vars.yml
+  tasks:
+    - name: Atftp start
+      ansible.builtin.service:
+        name: '{{item}}'
+        state: started
+      loop:
+        - atftpd.socket
+        - atftpd.service
+
+    - name: Clear ssh file
+      template:
+         src: ./template/ssh.j2
+         dest: /etc/ansible/playbook/ssh.py
+
+    - name: number of computers
+      ansible.builtin.lineinfile:
+        path: /etc/ansible/playbook/ssh.py
+        regexp: 'ssh_to_find = 0'
+        line: 'ssh_to_find = {{Number_of_Copms}}'
+
+    - name: Change default file
+      template:
+         src: ./template/default.j2
+         dest: /srv/tftpboot/pxelinux.cfg/default
+
+    - name: Chaneg grub file
+      template:
+         src: ./template/grub.j2
+         dest: /srv/tftpboot/grub.cfg
+
+    - name: WOL
+      command: sudo ansible-playbook ./wol.yml
+
+    - name: pause ansible
+      ansible.builtin.pause:
+        minutes: 5
+
+#    - name: Atftp off
+#      ansible.builtin.service:
+#        name: '{{item}}'
+#        state: stopped
+#      loop:
+#        - atftpd
+#        - atftpd.socket
+
+    - name: Clear WOL file
+      command: cp /srv/www/strona/template/wol.txt /srv/www/strona/wol.yml
+
+    - name: Start ssh script
+      command: sudo python3 ./ssh.py
+
+    - name: pause ansible
+      ansible.builtin.pause:
+        minutes: 15
+
+    - name: Start uftpd
+      command: '{{Copy_VM}}'
+
+    - name: lock
+      command: sudo ansible-playbook ./main.yml  
+#    - name: Start uftpd
+#      command: ansible-playbook /etc/ansible/playbook/uftpd.yml
+
+#    - name: Start uftp
+#      command: uftp -P 230.5.5.1 -L /var/log/uftp/log -R {{Speed}} -I eth1 -z -m 10 -u 1044 /srv/uftp/vm/w11.qcow2 /srv/uftp/vm/Suse.qcow2 /srv/uftp/vm/w2019.qcow2
+
+#    - name: end uftpd
+#      command: ansible-playbook /etc/ansible/playbook/enduftpd.yml

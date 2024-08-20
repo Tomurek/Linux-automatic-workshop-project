@@ -1,0 +1,69 @@
+---
+- hosts: suse
+  remote_user: root
+  tasks:
+#
+#    - name: Update System
+#      command: zypper update
+#
+#    - name: Install BC
+#      community.general.zypper:
+#        name: bc
+#        state: latest
+#
+#    - name: Install make
+#      community.general.zypper:
+#        name: make
+#        state: latest
+#
+#    - name: Install GCC
+#      community.general.zypper:
+#        name: gcc
+#        state: latest
+#
+#    - name: Install libopenssl-devel
+#      community.general.zypper:
+#        name: libopenssl-devel
+#        state: latest
+
+
+    - name: Change Timezone
+      community.general.timezone:
+        name: Europe/Warsaw
+
+    - name: Create script file
+      command: touch /usr/bin/lock.sh
+
+    - name: Create service file
+      command: touch /etc/systemd/system/lock.service
+
+    - name: Add script to file
+      template: 
+        src: template/script.j2
+        dest: /usr/bin/lock.sh
+
+    - name: Add service config
+      template: 
+        src: template/service.j2
+        dest: /etc/systemd/system/lock.service
+
+    - name: Change script permissions
+      command: chmod 744 /usr/bin/lock.sh
+
+    - name: Change service permissions
+      command: chmod 644 /etc/systemd/system/lock.service
+        
+    - name: Start Lock
+      command: systemctl start lock.service
+    
+    - name: Enable Lock
+      command: systemctl enable lock.service
+
+    - name: Create snap
+      command: snapper create --description source-lock
+      
+    - name: Script UP
+      command: sh /usr/bin/lock.sh
+
+    - name: Reboot
+      command: reboot

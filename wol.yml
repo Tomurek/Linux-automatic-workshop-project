@@ -1,0 +1,8 @@
+- hosts: localhost
+  become_user: root
+  tasks:    
+    - name: WOL
+      community.general.wakeonlan:
+        mac: '{{item}}'
+        broadcast: 20.20.20.255
+      loop:

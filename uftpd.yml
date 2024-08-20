@@ -1,0 +1,33 @@
+- hosts: suse
+  remote_user: root
+  vars_files: vars.yml
+  tasks:
+
+    - name: Download uFTP from server
+      ansible.builtin.copy:
+        src: /home/uftp-5.0.1.tar.gz
+        dest: /tmp
+
+    - name: untar uftp
+      command: tar -xf /tmp/uftp-5.0.1.tar.gz -C /tmp
+
+    - name: Makefile
+      command: make -C /tmp/uftp-5.0.1 OPENSSL=/usr
+
+    - name: Make install
+      command: make -C /tmp/uftp-5.0.1 install
+
+    - name: Open Firewall
+      firewalld:
+        zone: public
+        port: 1044/udp
+        state: enabled
+
+#    - name: Start uftp
+#      command: sudo ansible-playbook ./uftpd_server.yml
+#
+    - name: Start uftpd
+      command: sudo uftpd -N -20 -x 5 -P 230.5.5.1 -D /var/lib/libvirt/images/
+
+#    - name: end uftpd
+#      command: killall uftpd

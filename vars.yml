@@ -1,0 +1,5 @@
+Boot_Type: '/srv/dvd/autoyast/grub.cfg'
+Number_of_Copms: 1
+Enviroment: /dvd/autoyast/autoEFIDol.xml
+Speed: 104857600
+Copy_VM: 'sudo ansible-playbook uftpd.yml' 

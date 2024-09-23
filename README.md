@@ -9,6 +9,3 @@ This is an application that allows for automatic and remote installation of Linu
 - CLI\GUI system interface
 - creating and copying virtual machines
 - setting the transfer speed of copied machines
-- selecting up to 18 stations simultaneously creating and copying virtual machines
-- setting the transfer speed of copied machines
-- selecting up to 18 stations simultaneously 

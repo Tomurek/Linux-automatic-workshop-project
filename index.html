@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="../css/style3.css">
+  <link rel="stylesheet" href="../css/style_install_demo.css">
+  <script src="script_demo.js"></script>
+  <title>Demo Instalacja</title>
+</head>
+<body class="container">
+  <header class="header">
+    <a href="#" class="logo"><img src="../image/logo.png" alt="Logo strony"></a>
+    <label class="switch">
+      <input type="checkbox" id="dark-mode-switch" onclick="switchTheme(event)" />
+      <span class="slider"></span>
+    </label>
+    <input class="menu-btn" type="checkbox" id="menu-btn" />
+    <label class="menu-icon" for="menu-btn"><span class="navicon"></span></label>
+    <ul class="menu">
+      <li><a href="install_demo.html">Instalacja</a></li>
+      <li><a href="computers_demo.html">Komputery</a></li>
+      <li><a href="users_demo.html">Uzytkownicy</a></li>
+      <li><a href="status_demo.html">Status</a></li>
+      <li><a onclick="showBackup()" href="#">Backup</a></li>
+      <li><a href="#" >Wyloguj</a></li>
+    </ul>
+  </header>
+  <h2>Instalacja systemu (Demo)</h2>
+  <p>Ta strona demo prezentuje przykładowy formularz instalacji systemu oraz wybór parametrów. Wszystkie funkcje są nieaktywne w wersji demo – służy ona jedynie do prezentacji wyglądu i działania interfejsu.</p>
+  <form id="form" name="input" action="#" method="post">
+    <div class="form-section">
+      <div class="form-row">
+        <div style="flex:1;">
+          <div class="form-section-title">Wybór komputerów</div>
+          <div class="checkbox-group">
+            <label><input type="radio" name="komp" value="dol"> Dolne</label>
+            <label><input type="radio" name="komp" value="gora"> Górne</label>
+          </div>
+        </div>
+        <div style="flex:1;">
+          <div class="form-section-title">Typ bootowania</div>
+          <div class="checkbox-group">
+            <label><input type="radio" name="boot" value="legacy"> Legacy</label>
+            <label><input type="radio" name="boot" value="UEFI"> UEFI</label>
+          </div>
+        </div>
+      </div>
+      <div class="form-row">
+        <div style="flex:1;">
+          <div class="form-section-title">Kopiować maszyny wirtualne?</div>
+          <div class="checkbox-group">
+            <label><input type="radio" name="vm" value="tak"> Tak</label>
+            <label><input type="radio" name="vm" value="nie"> Nie</label>
+          </div>
+        </div>
+        <div style="flex:1;">
+          <div class="form-section-title">GUI czy CLI</div>
+          <div class="checkbox-group">
+            <label><input type="radio" name="Enviroment" value="GUI"> GUI</label>
+            <label><input type="radio" name="Enviroment" value="CLI"> CLI</label>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="form-section">
+      <div class="form-section-title">Numery stanowisk</div>
+      <div class="checkbox-group">
+        <label><input type="checkbox" name="workplace[]" value="1"> 1</label>
+        <label><input type="checkbox" name="workplace[]" value="2"> 2</label>
+        <label><input type="checkbox" name="workplace[]" value="3"> 3</label>
+        <label><input type="checkbox" name="workplace[]" value="4"> 4</label>
+        <label><input type="checkbox" name="workplace[]" value="5"> 5</label>
+        <label><input type="checkbox" name="workplace[]" value="6"> 6</label>
+        <label><input type="checkbox" name="workplace[]" value="7"> 7</label>
+        <label><input type="checkbox" name="workplace[]" value="8"> 8</label>
+        <label><input type="checkbox" name="workplace[]" value="9"> 9</label>
+        <label><input type="checkbox" name="workplace[]" value="10"> 10</label>
+        <label><input type="checkbox" name="workplace[]" value="11"> 11</label>
+        <label><input type="checkbox" name="workplace[]" value="12"> 12</label>
+        <label><input type="checkbox" name="workplace[]" value="13"> 13</label>
+        <label><input type="checkbox" name="workplace[]" value="14"> 14</label>
+        <label><input type="checkbox" name="workplace[]" value="15"> 15</label>
+        <label><input type="checkbox" name="workplace[]" value="16"> 16</label>
+        <label><input type="checkbox" name="workplace[]" value="17"> 17</label>
+        <label><input type="checkbox" name="workplace[]" value="18"> 18</label>
+        <label><input type="checkbox" name="workplace[]" value="19"> 19</label>
+
+      </div>
+    </div>
+    <div class="form-section">
+      <div class="form-row">
+        <div style="flex:1;">
+          <div class="form-section-title">Prędkość kopiowania</div>
+          <input class="speed-input" id="speed" type="number" name="speed" value="" placeholder="Podaj prędkość">
+        </div>
+        <div class="form-actions">
+          <button id="send" type="submit" name="wyslij">
+            Wyślij
+          </button>
+        </div>
+      </div>
+    </div>
+  </form>
+  <section class="showBackup" id="showBackup" style="display:none;">
+    <form method="post" action="#">
+      <div class="center">
+        <label>Backup</label><br>
+        <input type="submit" name="Backup" value="Zrób Backup">
+        <a class="alertB" onclick="hideBackup()">Anuluj</a>
+      </div>
+    </form>
+  </section>
+</body>
+</html>

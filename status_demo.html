@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="../css/style3.css">
+  <script src="script_demo.js"></script>
+  <title>Demo Status</title>
+</head>
+<body class="container">
+  <header class="header">
+    <a href="#" class="logo"><img src="../image/logo.png" alt="Logo strony"></a>
+    <label class="switch">
+      <input type="checkbox" id="dark-mode-switch" onclick="switchTheme(event)" />
+      <span class="slider"></span>
+    </label>
+    <input class="menu-btn" type="checkbox" id="menu-btn" />
+    <label class="menu-icon" for="menu-btn"><span class="navicon"></span></label>
+    <ul class="menu">
+      <li><a href="install_demo.html">Instalacja</a></li>
+      <li><a href="computers_demo.html">Komputery</a></li>
+      <li><a href="users_demo.html">Uzytkownicy</a></li>
+      <li><a href="status_demo.html">Status</a></li>
+      <li><a onclick="showBackup()" href="#">Backup</a></li>
+      <li><a href="#" >Wyloguj</a></li>
+    </ul>
+  </header>
+  <main class="main">
+    <h2>Status systemu (Demo)</h2>
+    <p>Ta strona demo pokazuje przykładowy status systemu. Wersja demo nie pobiera danych z serwera.</p>
+    <p><strong>Ostatni backup:</strong> 8 sierpnia 2025, godz. 14:37</p>
+    <table>
+      <thead>
+        <tr>
+          <th>Usługa</th>
+          <th>Status</th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody id="statusBody">
+        
+      </tbody>
+      <tfoot>
+        <tr><th colspan="3"><button class="button" onclick="refreshStatus()">Odśwież</button></th></tr>
+      </tfoot>
+    </table>
+  </main>
+  <section class="showBackup" id="showBackup" style="display:none;">
+    <form method="post" action="#">
+      <div class="center">
+        <label>Backup</label><br>
+        <input type="submit" name="Backup" value="Zrób Backup">
+        <a class="alertB" onclick="hideBackup()">Anuluj</a>
+      </div>
+    </form>
+  </section>
+</body>
+</html>

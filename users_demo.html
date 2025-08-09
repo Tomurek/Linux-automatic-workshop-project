@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="../css/style3.css">
+  <script src="script_demo.js"></script>
+  <title>Demo Użytkownicy</title>
+</head>
+<body class="container">
+  <header class="header">
+    <a href="#" class="logo"><img src="../image/logo.png" alt="Logo strony"></a>
+    <label class="switch">
+      <input type="checkbox" id="dark-mode-switch" onclick="switchTheme(event)" />
+      <span class="slider"></span>
+    </label>
+    <input class="menu-btn" type="checkbox" id="menu-btn" />
+    <label class="menu-icon" for="menu-btn"><span class="navicon"></span></label>
+    <ul class="menu">
+      <li><a href="install_demo.html">Instalacja</a></li>
+      <li><a href="computers_demo.html">Komputery</a></li>
+      <li><a href="users_demo.html">Uzytkownicy</a></li>
+      <li><a href="status_demo.html">Status</a></li>
+      <li><a onclick="showBackup()" href="#">Backup</a></li>
+      <li><a href="#" >Wyloguj</a></li>
+    </ul>
+  </header>
+  <main class="main">
+    <h2>Lista użytkowników (Demo)</h2>
+     <p>Ta strona demo pokazuje przykładową listę użytkowników oraz przyciski do dodawania, edycji i usuwania wpisów. Funkcje są nieaktywne w wersji demo.</p>
+    <table>
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Nazwa użytkownika</th>
+          <th>Uprawnienia</th>
+          <th></th>
+        </tr>
+      </thead>
+      <tfoot>
+        <tr><th colspan='4'>
+          <button class='button' type='button' onclick="showAddUser()">Dodaj nowego użytkownika</button>
+        </th></tr>
+      </tfoot>
+      <tbody>
+        <tr>
+          <td data-title='ID'>1</td>
+          <td data-title='Nazwa użytkownika'>admin</td>
+          <td data-title='Uprawnienia'>Administrator</td>
+          <td class='select'>
+            <button class='button' onclick="showEditUser()">Edit</button>
+            <button class='button' onclick="showDellUser()">Delete</button>
+          </td>
+        </tr>
+        <tr>
+          <td data-title='ID'>2</td>
+          <td data-title='Nazwa użytkownika'>user1</td>
+          <td data-title='Uprawnienia'>Użytkownik</td>
+          <td class='select'>
+            <button class='button' onclick="showEditUser()">Edit</button>
+            <button class='button' onclick="showDellUser()">Delete</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </main>
+
+  <section class="adduser" id="showAddUser" style="display:none;">
+    <form method="post" action="#">
+      <div class="center">
+        <label><h2>Tworzenie użytkownika</h2>
+        <p>Podaj dane aby zarejestrować użytkownika.</p></label>
+      </div>
+      <div class="center">
+        <label>Imię</label>
+        <input type="text" name="name" class="form-control" required>
+      </div>
+      <div class="center">
+        <label>Nazwisko</label>
+        <input type="text" name="surname" class="form-control" required>
+      </div>
+      <div class="center">
+        <label>Nazwa użytkownika</label>
+        <input type="text" name="username" class="form-control" required>
+      </div>
+      <div class="center">
+        <label>Hasło</label>
+        <input type="password" name="password" class="form-control" required>
+      </div>
+      <div class="center">
+        <label>Potwierdź hasło</label>
+        <input type="password" name="confirm_password" class="form-control" required>
+      </div>
+      <div class="center">
+        <input type="submit" class="btn btn-primary" value="Zarejestruj się">
+        <a class="alertB" onclick="hideAddUser()">Anuluj</a>
+      </div>
+    </form>
+  </section>
+
+  <section class="edituser" id="showEditUser" style="display:none;">
+    <form method="post" action="#">
+      <div class="center">
+        <label>Wprowadź nazwę użytkownika:</label><br>
+        <input type="text" name="username" required><br>
+      </div>
+      <div class="center">
+        <label>Wprowadź nowe hasło:</label><br>
+        <input type="password" name="password">
+        <input type="submit" name="update" value="Zmień hasło" required>
+      </div>
+      <div class="center">
+        <a class="alertB" onclick="hideEditUser()">Anuluj</a>
+      </div>
+    </form>
+  </section>
+
+  <section class="delluser" id="showDellUser" style="display:none;">
+    <form method="post" action="#">
+      <div class="center">
+        <label>Którego użytkownika chcesz usunąć:</label><br>
+        <input type="text" name="delete" required>
+        <input type="submit" name="usun" value="Usuń">
+        <a class="alertB" onclick="hideDellUser()">Anuluj</a>
+      </div>
+    </form>
+  </section>
+
+  <section class="showBackup" id="showBackup" style="display:none;">
+    <form method="post" action="#">
+      <div class="center">
+        <label>Backup</label><br>
+        <input type="submit" name="Backup" value="Zrób Backup">
+        <a class="alertB" onclick="hideBackup()">Anuluj</a>
+      </div>
+    </form>
+  </section>
+
+</body>
+</html>

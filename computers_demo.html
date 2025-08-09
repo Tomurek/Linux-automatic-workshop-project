@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="../css/style3.css">
+  <script src="script_demo.js"></script>
+  <title>Demo Komputery</title>
+</head>
+<body class="container">
+  <header class="header">
+    <a href="#" class="logo"><img src="../image/logo.png" alt="Logo strony"></a>
+    <label class="switch">
+      <input type="checkbox" id="dark-mode-switch" onclick="switchTheme(event)" />
+      <span class="slider"></span>
+    </label>
+    <input class="menu-btn" type="checkbox" id="menu-btn" />
+    <label class="menu-icon" for="menu-btn"><span class="navicon"></span></label>
+    <ul class="menu">
+      <li><a href="install_demo.html">Instalacja</a></li>
+      <li><a href="computers_demo.html">Komputery</a></li>
+      <li><a href="users_demo.html">Uzytkownicy</a></li>
+      <li><a href="status_demo.html">Status</a></li>
+      <li><a onclick="showBackup()" href="#">Backup</a></li>
+      <li><a href="#" >Wyloguj</a></li>
+    </ul>
+  </header>
+  <main class="main">
+    <h2>Lista komputerów (Demo)</h2>
+    <p>Ta strona demo pokazuje przykładową listę komputerów oraz przyciski do dodawania, edycji i usuwania wpisów. Funkcje są nieaktywne w wersji demo.</p>
+    <table>
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>NR_Stanowiska</th>
+          <th>Miejsce</th>
+          <th>MAC</th>
+          <th></th>
+        </tr>
+      </thead>
+      <tfoot>
+        <tr><th colspan='5'>
+          <button class='button' type='button' onclick="showAdd()">Dodaj nowy komputer</button>
+        </th></tr>
+      </tfoot>
+      <tbody>
+        <tr>
+          <td data-title='ID'>1</td>
+          <td data-title='NR_Stanowiska'>101</td>
+          <td data-title='Miejsce'>Góra</td>
+          <td data-title='MAC'>AA:BB:CC:DD:EE:FF</td>
+          <td class='select'>
+            <button class='button' onclick="showEdit()">Edit</button>
+            <button class='button' onclick="showDell()">Delete</button>
+          </td>
+        </tr>
+        <tr>
+          <td data-title='ID'>2</td>
+          <td data-title='NR_Stanowiska'>102</td>
+          <td data-title='Miejsce'>Dól</td>
+          <td data-title='MAC'>11:22:33:44:55:66</td>
+          <td class='select'>
+            <button class='button' onclick="showEdit()">Edit</button>
+            <button class='button' onclick="showDell()">Delete</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </main>
+
+  <section class="adduser" id="showAdd" style="display:none;">
+    <form method="post" action="#">
+      <div class="center">
+        <label>Miejsce:</label>
+        <select name="wybor" class="selectop">
+          <option value="gora">Góra</option>
+          <option value="dol">Dól</option>
+        </select>
+      </div>
+      <div class="center">
+        <label>Numer Stanowiska:</label>
+        <input type="text" name="nr_stanowiska" class="form-control" required>
+      </div>
+      <div class="center">
+        <label>MAC:</label>
+        <input type="text" name="MAC" class="form-control" required>
+      </div>
+      <div class="center">
+        <input type="submit" class="btn btn-primary" value="Dodaj adres MAC">
+        <a class="alertB" onclick="hideAdd()">Anuluj</a>
+      </div>
+    </form>
+  </section>
+
+  <section class="edituser" id="showEdit" style="display:none;">
+    <form method="post" action="#">
+      <div class="center">
+        <label>Miejsce</label>
+        <select name="wybor" class="selectop">
+          <option value="gora">Góra</option>
+          <option value="dol">Dól</option>
+        </select>
+      </div>
+      <div class="center">
+        <label>Wprowadź numer stanowiska: </label><br>
+        <input type="text" name="computer" required><br>
+      </div>
+      <div class="center">
+        <label>Wprowadź nowy adres MAC: </label><br>
+        <input type="text" name="MAC">
+        <input type="submit" name="update" value="Zmień MAC">
+      </div>
+      <div class="center">
+        <a class="alertB" onclick="hideEdit()">Anuluj</a>
+      </div>
+    </form>
+  </section>
+
+  <section class="delluser" id="showDell" style="display:none;">
+    <form method="post" action="#">
+      <div class="center">
+        <label>Miejsce</label>
+        <select name="wybor" class="selectop">
+          <option value="gora">Góra</option>
+          <option value="dol">Dól</option>
+        </select>
+        <label>Które stanowisko chcesz usunąć: </label><br>
+        <input type="text" name="MAC" required>
+        <input type="submit" name="usun" value="Usuń MAC">
+        <a class="alertB" onclick="hideDell()">Anuluj</a>
+      </div>
+    </form>
+  </section>
+
+  <section class="showBackup" id="showBackup" style="display:none;">
+    <form method="post" action="#">
+      <div class="center">
+        <label>Backup</label><br>
+        <input type="submit" name="Backup" value="Zrób Backup">
+        <a class="alertB" onclick="hideBackup()">Anuluj</a>
+      </div>
+    </form>
+  </section>
+  </main>
+</body>
+</html>

@@ -112,6 +112,7 @@ header img {
   max-height: 0;
   transition: max-height .2s ease-out;
   margin-top: 7px;
+  /* float: right; */
 /* float right jesli chcemy przesuwany */
 text-align: right;
 
@@ -183,6 +184,7 @@ text-align: right;
   top: 0;
 }
 
+ 
   a.active {
   color: var(--textcolor);
   cursor: default;
@@ -210,7 +212,9 @@ input.logout {
   margin: 0 !important;
 }
 
-@media (min-width: 850px) {
+/* 48em = 768px */
+
+@media (min-width: 960px) {
   .header li {
     float: left;
   }
@@ -304,6 +308,7 @@ button {
   color: var(--textcolor);
   padding: 0.7em 1em;
   padding-left: 0.9em;
+  margin-top: 10px;
   display: flex;
   border: none;
   border-radius: 16px;
@@ -426,7 +431,7 @@ table {
 
 th {
   text-align: left;
-  font-weight: 900;
+  font-weight: 700;
 }
 
 thead th {
@@ -456,8 +461,6 @@ tfoot th {
 .select {
   padding-bottom: 20px;
   border-bottom: 1px solid var(--tdborder);
-  /* display: flex;
-  justify-content: space-evenly; */
 }
 
 .select:before {
@@ -736,10 +739,19 @@ input:checked + .slider:before {
 }
 
 .box span:nth-child(2){
-  top: 0px;
+  top: 2px;
   left: 125px;
 }
 
+.box span:nth-child(7){
+  top: 85px;
+  left: 125px;
+}
+
+.box span:nth-child(12){
+  top: 165px;
+  left: 125px;
+}
 
 .server{
   width: 110px;
@@ -792,32 +804,6 @@ input:checked + .slider:before {
   }
 }
 
-.warning ul li{
-  width: 6px;
-  height: 6px;
-  float: left;
-  margin-left: 10px;
-  margin-top: 12px;
-  background: rgba(245,190,0,0.6);
-}
-
-.warning ul li:nth-child(odd){
-  -webkit-animation: pattern2 0.14s linear infinite;
-}
-
-.warning ul li:nth-child(even){
-  -webkit-animation: pattern2 0.14s 0.02s linear infinite;
-}
-
-@-webkit-keyframes pattern2{
-  0%{
-    background: rgba(245,190,0,0.6);
-  }
-  100%{
-    background: rgba(245,190,0,1);
-  }
-}
-
 .error ul li{
   width: 6px;
   height: 6px;
@@ -827,11 +813,22 @@ input:checked + .slider:before {
   background: rgba(236,69,62,0.6);
 }
 
-.error ul li:nth-child(odd){
+.error ul li:first-child{
   -webkit-animation: pattern3 0.14s 0.12s linear infinite;
 }
-
-.error ul li:nth-child(even){
+.error ul li:nth-child(2){
+  -webkit-animation: pattern3 0.14s 0.10s linear infinite;
+}
+.error ul li:nth-child(3){
+  -webkit-animation: pattern3 0.14s 0.08s linear infinite;
+}
+.error ul li:nth-child(4){
+  -webkit-animation: pattern3 0.14s 0.06s linear infinite;
+}
+.error ul li:nth-child(5){
+  -webkit-animation: pattern3 0.14s 0.04s linear infinite;
+}
+.error ul li:last-child{
   -webkit-animation: pattern3 0.14s 0.02s linear infinite;
 }
 
@@ -844,6 +841,44 @@ input:checked + .slider:before {
   }
   100%{
     background: rgba(236,69,62,1);
+  }
+}
+
+.warning ul li{
+  width: 6px;
+  height: 6px;
+  float: left;
+  margin-left: 10px;
+  margin-top: 12px;
+  background: rgba(255,204,0,0.7);
+}
+.warning ul li:first-child{
+  -webkit-animation: pattern2 0.14s 0.12s linear infinite;
+}
+.warning ul li:nth-child(2){
+  -webkit-animation: pattern2 0.14s 0.10s linear infinite;
+}
+.warning ul li:nth-child(3){
+  -webkit-animation: pattern2 0.14s 0.08s linear infinite;
+}
+.warning ul li:nth-child(4){
+  -webkit-animation: pattern2 0.14s 0.06s linear infinite;
+}
+.warning ul li:nth-child(5){
+  -webkit-animation: pattern2 0.14s 0.04s linear infinite;
+}
+.warning ul li:last-child{
+  -webkit-animation: pattern2 0.14s 0.02s linear infinite;
+}
+@-webkit-keyframes pattern2{
+  0%{
+    background: rgba(255,204,0,0.7);
+  }
+  80%{
+    background: rgba(255,204,0,0.7);
+  }
+  100%{
+    background: rgba(255,204,0,1);
   }
 }
 
